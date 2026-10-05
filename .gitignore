@@ -1,0 +1,18 @@
+# secrets: payer/program keypairs and test vault notes never go in git
+/keys/
+# build output
+/winterwallet/target/
+node_modules/
+dist/
+.next/
+*.log
+.DS_Store
+.env*
+!.env.example
+/wasm/target/
+/wasm/pkg/
+/wasm/pkg-node/
+/wasm/test-page/public/bundle.js
+/wasm/test-page/public/quantum_vault_wasm_bg.wasm
+/web/.env.development.local
+*.zip

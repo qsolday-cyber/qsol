@@ -1,0 +1,15 @@
+{
+  "name": "quantum-vault-wasm-test-page",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "cp ../pkg/quantum_vault_wasm_bg.wasm public/ && esbuild src/main.js --bundle --format=esm --platform=browser --outfile=public/bundle.js --define:global=globalThis",
+    "serve": "node serve.mjs",
+    "test:cli-equivalence": "node tests/cli-equivalence.mjs"
+  },
+  "dependencies": {
+    "@solana/web3.js": "^1.99.0",
+    "bs58": "^6.0.0",
+    "esbuild": "^0.25.0"
+  }
+}

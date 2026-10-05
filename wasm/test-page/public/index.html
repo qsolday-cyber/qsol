@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quantum Vault — WASM test page (devnet)</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<h1>Quantum Vault — bare WASM test page <span class="pill">devnet</span></h1>
+<p class="warn">Test harness only. Notes typed here are kept in page memory and never sent anywhere except as derived public data (addresses, signatures) inside Solana transactions.</p>
+
+<section>
+  <h2>1. Fee payer (browser test keypair)</h2>
+  <div>Address: <code id="payer-addr">…</code> &nbsp; Balance: <code id="payer-bal">…</code>
+    <button id="btn-payer-refresh">Refresh</button></div>
+  <small>Generated in this browser and kept in localStorage. Fund it with devnet SOL before using the buttons below.</small>
+</section>
+
+<section>
+  <h2>2. Quantum note</h2>
+  <button id="btn-generate">Generate 24-word note (crypto.getRandomValues → WASM)</button>
+  <textarea id="note" rows="3" placeholder="paste or generate a 24-word note" spellcheck="false" autocomplete="off"></textarea>
+  <div>Valid: <code id="note-valid">—</code> &nbsp; Wallet ID: <code id="wallet-id">—</code></div>
+  <div>Vault address (PDA): <code id="vault-addr">—</code></div>
+</section>
+
+<section>
+  <h2>3. Vault on chain</h2>
+  <button id="btn-info">Refresh vault info + recover key position</button>
+  <div>Exists: <code id="v-exists">—</code> &nbsp; SOL balance: <code id="v-bal">—</code> &nbsp; On-chain root: <code id="v-root">—</code></div>
+  <div>Recovered key position: <code id="v-pos">—</code></div>
+  <div class="row">
+    <button id="btn-init">Init vault (signs position 0 in WASM)</button>
+    <button id="btn-deposit">Deposit 0.2 SOL (plain transfer)</button>
+    <button id="btn-withdraw">Withdraw 0.05 SOL → payer (WASM Advance)</button>
+  </div>
+</section>
+
+<section>
+  <h2>4. Tokens</h2>
+  <div class="row">
+    <label>Mint <input id="tok-mint" size="46" value="5f1hpSQxFEaK3RqmASoEer3tBuYN5G8zCVSbFEt9NHEh"></label>
+    <label>Token program
+      <select id="tok-program">
+        <option value="TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA">SPL Token</option>
+        <option value="TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb">Token-2022</option>
+      </select></label>
+    <label>Amount (base units) <input id="tok-amount" size="12" value="500000"></label>
+  </div>
+  <div>Vault token balance: <code id="tok-vault-bal">—</code> &nbsp; Payer token balance: <code id="tok-payer-bal">—</code>
+    <button id="btn-tok-refresh">Refresh</button></div>
+  <div class="row">
+    <button id="btn-tok-deposit">Deposit tokens payer → vault (creates vault ATA)</button>
+    <button id="btn-tok-withdraw">Transfer tokens vault → payer (WASM Advance)</button>
+  </div>
+</section>
+
+<section>
+  <h2>5. CLI equivalence</h2>
+  <button id="btn-equiv">Recompute the 4 Milestone-1 CLI instructions from this note and compare with devnet</button>
+  <small>Only meaningful for the Milestone 1 test note; signatures are recomputed over already-published messages (deterministic, nothing is sent).</small>
+</section>
+
+<section>
+  <h2>Log</h2>
+  <pre id="log"></pre>
+</section>
+<script type="module" src="/bundle.js"></script>
+</body>
+</html>

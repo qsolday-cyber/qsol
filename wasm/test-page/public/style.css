@@ -1,0 +1,12 @@
+body { font: 14px/1.4 -apple-system, system-ui, sans-serif; max-width: 980px; margin: 24px auto; padding: 0 16px; color: #111; background: #fafafa; }
+section { background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+h1 { font-size: 20px; } h2 { font-size: 15px; margin: 0 0 8px; }
+code { background: #f0f0f0; padding: 1px 4px; border-radius: 3px; word-break: break-all; }
+textarea, input, select { font: inherit; width: 100%; box-sizing: border-box; margin: 6px 0; }
+input, select { width: auto; }
+button { font: inherit; margin: 4px 4px 4px 0; padding: 6px 10px; cursor: pointer; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: end; }
+.pill { font-size: 12px; background: #ffe9a8; border-radius: 10px; padding: 2px 8px; vertical-align: middle; }
+.warn { color: #8a4b00; }
+#log { background: #111; color: #d7ffd7; padding: 10px; border-radius: 6px; max-height: 420px; overflow: auto; white-space: pre-wrap; font-size: 12px; }
+small { color: #555; }

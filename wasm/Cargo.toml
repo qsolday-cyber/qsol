@@ -1,0 +1,29 @@
+[package]
+name = "quantum-vault-wasm"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+description = "Browser signing module for Quantum Vault: thin wasm-bindgen wrapper over Winterwallet's core + client crates. Contains no cryptography of its own."
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+winterwallet-core = { path = "../winterwallet/core" }
+winterwallet-client = { path = "../winterwallet/client" }
+winterwallet-common = { path = "../winterwallet/common" }
+solana-address = { version = "2.6.0", default-features = false, features = ["curve25519", "decode"] }
+solana-instruction = "3.4"
+wasm-bindgen = "0.2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+zeroize = "1.8"
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = false
