@@ -11,6 +11,8 @@ the on-chain root) and instruction construction all come from Winterwallet.
 ```bash
 rustup target add wasm32-unknown-unknown
 cargo install wasm-pack
+# remap paths so the binary carries no local directory names
+export RUSTFLAGS="--remap-path-prefix=$(cd .. && pwd)=/qsol --remap-path-prefix=$HOME/.cargo=/cargo --remap-path-prefix=$HOME/.rustup=/rustup"
 wasm-pack build --release --target web    --out-dir pkg        # for the browser
 wasm-pack build --release --target nodejs --out-dir pkg-node   # for the Node tests
 ```

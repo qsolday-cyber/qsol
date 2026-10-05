@@ -108,8 +108,12 @@ The site is fully static. `web/vercel.json` sets the build (`vite`), SPA rewrite
 ```bash
 cd web
 npx vercel login            # once, in your own terminal
-npx vercel deploy --prod    # Root Directory = web/ if you connect the Git repo in the dashboard
+npm run deploy              # = scripts/deploy.sh: deploys a git-free copy to production
 ```
+
+`npm run deploy` copies `web/` without `.git` before calling `vercel deploy --prod`. Vercel blocks CLI
+deployments whose commit author is not a team member, and this repository's commits are authored by an
+anonymous identity, so deploying straight from the checkout is refused.
 
 Required Vercel settings when importing from Git: **Root Directory** `web`, framework **Vite**,
 build command `npm run build`, output `dist`. No environment variables are needed for production

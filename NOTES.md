@@ -55,3 +55,7 @@ Vendored copy of https://github.com/blueshift-gg/winterwallet with ONE functiona
 ## GitHub (2026-10-05)
 - Repo on GitHub (remote `origin`, branch `main`); `gh` CLI installed at `~/.local/bin/gh`. Add a collaborator with `gh api -X PUT repos/<owner>/qsol/collaborators/<user> -f permission=pull`.
 - Audit guide: `docs/AUDIT.md`.
+
+## Deploying (2026-10-05)
+- `cd web && npm run deploy` (git-free copy → `vercel deploy --prod`). Direct `vercel deploy` from the checkout is BLOCKED by Vercel ("commit author doesn't have permission") because commits are authored by the anonymous `qsol` identity.
+- WASM is built with `--remap-path-prefix` (see wasm/README) so no local paths end up in the binary.
